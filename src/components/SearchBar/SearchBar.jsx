@@ -13,28 +13,28 @@ export default class SearchBar extends Component {
             return;
         }
         this.props.onSubmit(this.state.inputFilter);
-        this.setState({inputFilter: ''});
+        this.setState({inputFilter: '' });
     };
 
     render() {
         return(
             <BarSearch>
-        <FormSearch onSubmit={this.handleSubmit}>
-          <button type="submit" className="button">
-            Search
-          </button>
+              <FormSearch onSubmit={this.handleSubmit}>
+                <button type="submit" className="button">
+                  Search
+                </button>
 
-          <input
-            className="input"
-            type="text"
-            value={this.state.inputFilter}
-            onChange={this.handleInputChange}
-            // autocomplete="off"
-            // autofocus
-            placeholder="Search images and photos"
-          />
-        </FormSearch>
-      </BarSearch>
+                <input
+                  className="input"
+                  type="text"
+                  value={this.state.inputFilter}
+                  onChange={this.handleInputChange}
+                  // autocomplete="off"
+                  // autofocus
+                  placeholder="Search images and photos"
+                />
+              </FormSearch>
+            </BarSearch>
         )
     }
 }

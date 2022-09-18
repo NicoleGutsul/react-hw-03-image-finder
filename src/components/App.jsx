@@ -6,10 +6,14 @@ class App extends Component {
     inputFilter: '',
   };
 
+  handleOnSubmit = inputFilter => {
+    this.setState({ inputFilter});
+  };
+
   render() {
     return(
       <>
-         <SearchBar/>
+         <SearchBar onSubmit={this.handleOnSubmit}/>
       
       </>
     )
