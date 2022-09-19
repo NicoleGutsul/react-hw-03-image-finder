@@ -13,6 +13,10 @@ export default class Modal extends Component {
 
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('keydown', this.handleKeyDown);
+    }
+
     render() {
         return (
             <Overlay>
