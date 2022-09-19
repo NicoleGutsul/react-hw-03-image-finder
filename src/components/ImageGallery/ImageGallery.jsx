@@ -63,6 +63,17 @@ export default class ImageGallery extends Component {
     render() {
         return (
             <GalleryImage>
+                {this.state.loading && (
+                    <Circles
+                       height="80"
+                       width="80"
+                       color="#4fa94d"
+                       ariaLabel="circles-loading"
+                       wrapperStyle={{}}
+                       wrapperClass=""
+                       visible={true}
+                       />
+                )}
 
                 {this.state.gallery === '' ? (
                     <p>Enter name images!</p>
