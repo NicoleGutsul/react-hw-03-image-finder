@@ -24,6 +24,10 @@ export default class ImageGallery extends Component {
         }));
     }
 
+    getImage = (webformatURL, tags) => {
+        this.setState({ currentUrl: webformatURL, currentTags: tags});
+    }
+
     loadMore = () => {
         this.setState(prevState => ({ page: prevState.page + 1 }));
     };
