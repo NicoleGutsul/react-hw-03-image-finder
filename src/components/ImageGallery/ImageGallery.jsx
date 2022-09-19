@@ -1,10 +1,10 @@
 import { Component } from "react";
 import { GalleryImage } from "./ImageGallery.styled";
-import ImageGalleryItem from "components/ImageGalleryItem/ImageGalleryItem";
+import ImageGalleryItem from "components/ImageGalleryItem";
 import { Circles } from "react-loader-spinner";
 import { ButtonLoadMore } from "../LoadMore/LoadMore";
-import Modal from "../Modal/Modal";
-import { FetchData } from "../../FetchData/FetchData";
+import Modal from "../Modal";
+import FetchData  from "../../FetchData/FetchData";
 
 export default class ImageGallery extends Component {
     state = {

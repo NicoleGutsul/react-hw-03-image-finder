@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { AppStyled } from "./App.styled";
-import SearchBar from "./SearchBar/SearchBar";
-import ImageGallery from "./ImageGallery/ImageGallery";
+import SearchBar from "./SearchBar";
+import ImageGallery from "./ImageGallery";
 
 class App extends Component {
   state = {
