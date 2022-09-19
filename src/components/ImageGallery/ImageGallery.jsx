@@ -18,6 +18,35 @@ export default class ImageGallery extends Component {
         totalHits: 0,
     };
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.page !== this.state.page) {
+            this.setState({ loading: true });
+            FetchData(this.props.inputFilter, this.state.page)
+            .then(gallery => {
+                this.setState(prevState => ({
+                    gallery: [...prevState.gallery, gallery.hits],
+                    loading: false,
+                    total: prevState.total + gallery.hits.length,
+                    totalHits: gallery.totalHits,
+                }));
+            })
+            .catch(error => this.setState({ error }));
+        }
+        if (prevProps.inputFilter !== this.props.inputFilter) {
+            this.setState({loading: true, gallery: [], page: 1, total: 0});
+            FetchData(this.props.inputFilter, this.state.page)
+              .then(gallery => {
+                this.setState(prevState => ({
+                    gallery: [...prevState.gallery, ...gallery.hits],
+                    loading: false,
+                    total: prevState.total + gallery.hits.length,
+                    totalHits: gallery.totalHits,
+                }));
+              })
+              .catch(error => this.setState({ error }));
+        }
+    }
+
     toggleModal = () => {
         this.setState(state => ({
             modal: !state.modal,
