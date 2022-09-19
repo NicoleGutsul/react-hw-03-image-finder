@@ -24,7 +24,7 @@ export default class SearchBar extends Component {
         return(
             <BarSearch>
               <FormSearch onSubmit={this.handleSubmit}>
-                <button type="submit" className="button">
+                <button type="submit">
                   Search
                 </button>
 
@@ -39,6 +39,6 @@ export default class SearchBar extends Component {
                 />
               </FormSearch>
             </BarSearch>
-        )
+        );
     }
 }

@@ -24,7 +24,7 @@ export default class ImageGallery extends Component {
             FetchData(this.props.inputFilter, this.state.page)
             .then(gallery => {
                 this.setState(prevState => ({
-                    gallery: [...prevState.gallery, gallery.hits],
+                    gallery: [...prevState.gallery, ...gallery.hits],
                     loading: false,
                     total: prevState.total + gallery.hits.length,
                     totalHits: gallery.totalHits,
@@ -33,7 +33,7 @@ export default class ImageGallery extends Component {
             .catch(error => this.setState({ error }));
         }
         if (prevProps.inputFilter !== this.props.inputFilter) {
-            this.setState({loading: true, gallery: [], page: 1, total: 0});
+            this.setState({ loading: true, gallery: [], page: 1, total: 0 });
             FetchData(this.props.inputFilter, this.state.page)
               .then(gallery => {
                 this.setState(prevState => ({
@@ -60,6 +60,7 @@ export default class ImageGallery extends Component {
     loadMore = () => {
         this.setState(prevState => ({ page: prevState.page + 1 }));
     };
+
     render() {
         return (
             <GalleryImage>
@@ -76,9 +77,9 @@ export default class ImageGallery extends Component {
                 )}
 
                 {this.state.gallery.total === 0 ? (
-                    <h2>
+                    <p>
                         Maybe u made miss? We didn't find photos with this name {this.props.inputFilter}
-                    </h2>
+                    </p>
                 ) : null}
 
                 {this.state.gallery === '' ? (
