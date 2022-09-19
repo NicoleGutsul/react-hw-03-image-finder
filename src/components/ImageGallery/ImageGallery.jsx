@@ -2,6 +2,7 @@ import { Component } from "react";
 import { GalleryImage } from "./ImageGallery.styled";
 import ImageGalleryItem from "components/ImageGalleryItem/ImageGalleryItem";
 import { Circles } from "react-loader-spinner";
+import { ButtonLoadMore } from "../LoadMore/LoadMore";
 import { FetchData } from "../../FetchData/FetchData";
 
 export default class ImageGallery extends Component {
@@ -15,6 +16,10 @@ export default class ImageGallery extends Component {
         total: 0,
         totalHits: 0,
     };
+
+    loadMore = () => {
+        this.setState(prevState => ({ page: prevState.page + 1 }));
+    };
     render() {
         return (
             <GalleryImage>
@@ -23,6 +28,13 @@ export default class ImageGallery extends Component {
                     <p>Enter name images!</p>
                 ) : (
                     <ImageGalleryItem gallery={this.state.gallery}/>
+                )}
+                {(this.state.gallery !== '') &
+                (this.state.gallery.total !== 0) &
+                (this.state.totalHits !== this.state.total) ? (
+                <ButtonLoadMore onClick={this.loadMore} />
+                ) : (
+                ''
                 )}
 
             </GalleryImage>
