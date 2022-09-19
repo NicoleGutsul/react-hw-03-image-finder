@@ -17,7 +17,7 @@ export default class Modal extends Component {
         return (
             <Overlay>
                 <ModalList>
-                    <img src={} alt={}/>
+                    <img src={this.props.Url} alt={this.props.Tags}/>
                 </ModalList>
             </Overlay>
         )
