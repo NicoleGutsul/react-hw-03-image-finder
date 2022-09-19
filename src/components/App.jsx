@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { AppStyled } from "./App.styled";
 import SearchBar from "./SearchBar/SearchBar";
 import ImageGallery from "./ImageGallery/ImageGallery";
 
@@ -13,12 +14,14 @@ class App extends Component {
 
   render() {
     return(
-      <>
-      <SearchBar onSubmit={this.handleOnSubmit}/>
-      <ImageGallery inputFilter={this.state.inputFilter}/>
-      </>
-    )
+      <AppStyled>
+        <>
+          <SearchBar onSubmit={this.handleOnSubmit}/>
+          <ImageGallery inputFilter={this.state.inputFilter}/>
+        </>
+      </AppStyled>
+    );
   }
-};
+}
 
 export default App;
