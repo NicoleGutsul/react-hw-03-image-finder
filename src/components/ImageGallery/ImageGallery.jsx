@@ -74,6 +74,7 @@ export default class ImageGallery extends Component {
                        visible={true}
                        />
                 )}
+
                 {this.state.gallery.total === 0 ? (
                     <h2>
                         Maybe u made miss? We didn't find photos with this name {this.props.inputFilter}
@@ -83,14 +84,29 @@ export default class ImageGallery extends Component {
                 {this.state.gallery === '' ? (
                     <p>Enter name images!</p>
                 ) : (
-                    <ImageGalleryItem gallery={this.state.gallery}/>
+                    <ImageGalleryItem 
+                       gallery={this.state.gallery}
+                       onClickModal={this.toggleModal}
+                       getImage={this.getImage}
+                    />
                 )}
+
                 {(this.state.gallery !== '') &
                 (this.state.gallery.total !== 0) &
                 (this.state.totalHits !== this.state.total) ? (
-                <ButtonLoadMore onClick={this.loadMore} />
+                <ButtonLoadMore 
+                   onClick={this.loadMore} 
+                />
                 ) : (
                 ''
+                )}
+
+                {this.state.modal && (
+                    <Modal
+                       Url={this.state.currentUrl}
+                       Tags={this.state.currentTags}
+                       onClose={this.toggleModal}
+                    />
                 )}
 
             </GalleryImage>
