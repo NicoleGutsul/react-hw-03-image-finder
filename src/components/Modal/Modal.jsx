@@ -17,9 +17,16 @@ export default class Modal extends Component {
         window.removeEventListener('keydown', this.handleKeyDown);
     }
 
+    backDropClick = e => {
+        if (e.currentTarget === e.target) {
+            this.props.onClose();
+
+        }    
+    }
+
     render() {
         return (
-            <Overlay>
+            <Overlay onClick={this.backDropClick}>
                 <ModalList>
                     <img src={this.props.Url} alt={this.props.Tags}/>
                 </ModalList>
