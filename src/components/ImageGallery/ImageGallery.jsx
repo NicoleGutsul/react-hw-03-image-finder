@@ -74,6 +74,11 @@ export default class ImageGallery extends Component {
                        visible={true}
                        />
                 )}
+                {this.state.gallery.total === 0 ? (
+                    <h2>
+                        Maybe u made miss? We didn't find photos with this name {this.props.inputFilter}
+                    </h2>
+                ) : null}
 
                 {this.state.gallery === '' ? (
                     <p>Enter name images!</p>
