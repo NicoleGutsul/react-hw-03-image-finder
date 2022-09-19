@@ -7,6 +7,10 @@ export default class SearchBar extends Component {
     };
 
     handleInputChange = e => {
+      this.setState({inputFilter: e.currentTarget.value.toLowerCase() });
+    }
+
+    handleSubmit = e => {
         e.preventDefault();
         if (this.state.inputFilter.trim() === '') {
             alert('Введите название');
